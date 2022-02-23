@@ -13,11 +13,12 @@ import createSagaMiddleware from "redux-saga";
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(
+export const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(reduxThunk, sagaMiddleware))
 );
 sagaMiddleware.run(rootSaga);
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

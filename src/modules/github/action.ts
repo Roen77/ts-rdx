@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 import { createAsyncAction } from "typesafe-actions";
-import { createStandardAction } from "typesafe-actions/dist/deprecated/create-standard-action";
+// import { createStandardAction } from "typesafe-actions/dist/deprecated/create-standard-action";
 import { GithubProfile } from "../../api/github";
 
 export const GET_USER_PROFILE = "github/GET_USER_PROFILE";

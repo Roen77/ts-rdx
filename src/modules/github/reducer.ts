@@ -5,11 +5,11 @@ import {
   createAsyncReducer,
   transformToArray,
 } from "../../lib/reducerUtils";
-import {
-  GET_USER_PROFILE,
-  GET_USER_PROFILE_ERROR,
-  GET_USER_PROFILE_SUCCESS,
-} from "./action";
+// import {
+//   GET_USER_PROFILE,
+//   GET_USER_PROFILE_ERROR,
+//   GET_USER_PROFILE_SUCCESS,
+// } from "./action";
 import { GithubAction, GithubState } from "./types";
 
 const initialState: GithubState = {

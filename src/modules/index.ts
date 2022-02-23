@@ -6,10 +6,15 @@ import { combineReducers } from "redux";
 import counter from "./counter";
 import { githubSaga } from "./github";
 import { all } from "redux-saga/effects";
+import regionReducer from "./Region/reducer";
+import regionSaga from "./Region";
+// import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+// import { store } from "../index";
 const rootReducer = combineReducers({
   counter,
   todos,
   github,
+  ...regionReducer,
 });
 
 export default rootReducer;
@@ -18,5 +23,10 @@ export default rootReducer;
 export type RootState = ReturnType<typeof rootReducer>;
 
 export function* rootSaga() {
-  yield all([githubSaga()]);
+  yield all([githubSaga(), ...regionSaga.saga]);
 }
+
+// export const useAppDispatch = useDispatch<typeof store.dispatch>();
+// export const useAppSelector: TypedUseSelectorHook<
+//   ReturnType<typeof store.getState>
+// > = useSelector;

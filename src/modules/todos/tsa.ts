@@ -1,9 +1,8 @@
-// modules/counter.ts
-// ducks패턴 즉 액션타입 ,액션생성함수, 리듀서를 모두 한파일에 작성하겠다라는 의미이다.
-
-import { createAction, ActionType, createReducer } from "typesafe-actions";
-
 // 1. 액션 생성함수 선언
+
+import { ActionType, createReducer } from "typesafe-actions";
+import { createAction } from "typesafe-actions";
+
 // modules/counter.ts
 export const increase = createAction("counter/INCREASE")();
 export const decrease = createAction("counter/DECREASE")();
@@ -20,24 +19,14 @@ export type CounterState = {
   count: number;
 };
 // state 초기 선언
-export const initialState: CounterState = {
+export const initialState3: CounterState = {
   count: 0,
 };
 
 // 리듀서 생성
-const counter = createReducer<CounterState, CounterAction>(initialState)
+const counter = createReducer<CounterState, CounterAction>(initialState3)
   .handleAction(increase, (state) => ({ count: state.count + 1 }))
   .handleAction(decrease, (state) => ({ count: state.count - 1 }))
   .handleAction(increaseBy, (state, action) => ({
     count: state.count + action.payload,
   }));
-// 리듀서 함수 내보내주기
-export default counter;
-
-// // 위에 typesafe-actions을 사용한 액션 타입 함수는 아래와 같다.
-// const INCREASE = "counter/INCREASE";
-// const DECREASE = "counter/DECREASE";
-// const INCREASE_BY = "counter/INCREASE_BY";
-// export const increase = () => ({ type: INCREASE });
-// export const decrease = () => ({ type: DECREASE });
-// export const increaseBy = (payload) => ({ type: INCREASE_BY, payload });
